@@ -14,16 +14,16 @@ jobs:
     
     strategy:
       matrix:
-        python-version: ['3.11', '3.12']
+        python-version: ['3.12']
     
     steps:
     # Step 1: Checkout code
     - name: Checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
     
     # Step 2: Set up Python
     - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
         python-version: ${{ matrix.python-version }}
     
@@ -37,14 +37,9 @@ jobs:
     # Step 4: Run unit tests
     - name: Run unit tests
       run: |
-        pytest cortex/tests/unit -v --tb=short
-    
-    # Step 5: Run integration tests
-    - name: Run integration tests
-      run: |
-        pytest cortex/tests/integration -v --tb=short
-    
-    # Step 6: Generate coverage report
+        pytest tests/unit -v --tb=short
+
+    # Step 5: Generate coverage report
     - name: Generate coverage report
       run: |
-        pytest cortex/tests -v --cov=cortex --cov-report=term-missing
+        pytest tests -v --cov=app --cov-report=term-missing
