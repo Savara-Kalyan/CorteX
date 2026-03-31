@@ -1,0 +1,18 @@
+
+# Log level
+level: INFO
+
+# Where to save JSON logs
+log_file: logs/cortex.log
+
+# Show logs in terminal
+console_enabled: true
+
+# Save logs to file
+file_enabled: true
+
+# Rotate file when it reaches 10MB
+max_file_size_mb: 10
+
+# Keep 3 old log files (cortex.log.1, cortex.log.2, cortex.log.3)
+backup_count: 3

@@ -1,0 +1,24 @@
+
+environment: production
+
+extraction:
+  char_count_threshold: 500
+  max_concurrent_files: 5
+  max_workers: 10
+  extraction_timeout_seconds: 300.0
+  enable_ocr: true
+  enable_vlm: false
+  vlm_model: gpt-4-vision-preview
+  max_file_size_mb: 500
+  min_file_size_bytes: 100
+
+deduplication:
+  enabled: true
+  method: content_hash
+  threshold: 0.95
+
+documents_root: ./documents
+temp_dir: /tmp/cortex-doc-loading
+
+enable_deduplication: true
+enable_validation: true

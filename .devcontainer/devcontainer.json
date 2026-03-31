@@ -17,12 +17,12 @@
                 "ms-toolsai.jupyter",
                 "ms-toolsai.jupyter-keymap",
                 "ms-toolsai.vscode-jupyter-cell-tags",
-                "charliermarsh.ruff",
-                "tamasfe.even-better-toml",
+"tamasfe.even-better-toml",
                 "redhat.vscode-yaml",
                 "mechatroner.rainbow-csv",
                 "mtxr.sqltools",
-                "42crunch.vscode-openapi"
+                "42crunch.vscode-openapi",
+                "anthropics.claude-code"
             ]
         }
     }
