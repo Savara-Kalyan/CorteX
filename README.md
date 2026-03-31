@@ -8,6 +8,13 @@ CorteX is an enterprise knowledge platform that ingests, processes, and makes se
 
 ```
 CorteX/
+├── .devcontainer/
+│   ├── Dockerfile
+│   ├── devcontainer.json
+│   └── docker-compose.yaml
+├── .github/
+│   └── workflows/
+│       └── test.yaml
 ├── app/
 │   ├── logging/
 │   │   ├── config.py              # Logging configuration loader
@@ -23,8 +30,6 @@ CorteX/
 │   └── services/
 │       ├── document_loading.md    # Document loading service docs
 │       └── chunking.md            # Chunking service docs
-├── scripts/
-│   └── download_docs.py           # Scrapes GitLab handbook pages to markdown
 ├── settings/
 │   ├── document-loading-config.yaml
 │   └── logging_config.yaml
@@ -32,7 +37,9 @@ CorteX/
 │   └── unit/
 │       ├── test_chunking.py
 │       └── test_document_loading.py
-├── config.yaml                    # Top-level app config
+├── config.yaml
+├── pyrightconfig.json
+├── pytest.ini
 ├── requirements.txt
 ├── run.sh
 └── freeze.sh
