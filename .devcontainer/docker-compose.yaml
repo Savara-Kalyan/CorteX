@@ -10,29 +10,23 @@ services:
       - ../..:/workspace:cached
     command: sleep infinity
   
-  mongo:
-    image: mongo
-    restart: always
-    ports:
-      - 27017:27017
-    
+  vector_store:
+    image: pgvector/pgvector:pg16
     environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: admin
-      
-    volumes:
-      - mongodb_data:/data/db/
-
-  valkey:
-    image: valkey/valkey:latest
+      POSTGRES_USER: cortex
+      POSTGRES_PASSWORD: cortex
+      POSTGRES_DB: cortex_vectors
     ports:
-      - 6379:6379
+      - "5432:5432"
     volumes:
-      - valkey_data:/usr/local/etc/valkey
-
+      - pgvector_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U cortex -d cortex_vectors"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
 volumes:
-  mongodb_data:
-  valkey_data:
+  pgvector_data:
   
   

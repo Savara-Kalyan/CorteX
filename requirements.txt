@@ -1,5 +1,8 @@
 # Services
 chonkie
+unstructured[all-docs]
+pypdf
+pypdf
 langchain-docling
 langchain-core
 langchain-text-splitters
@@ -14,3 +17,10 @@ pytest
 pytest-asyncio
 pytest-mock
 pytest-cov
+
+# Db
+pgvector
+psycopg2-binary
+psycopg[binary]
+qdrant-client
+

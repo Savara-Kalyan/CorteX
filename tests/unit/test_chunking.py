@@ -4,7 +4,7 @@ from unittest.mock import AsyncMock, MagicMock, patch
 
 from langchain_core.documents import Document
 
-from app.services.chunking.service import DocumentChunker, ChunkingException
+from rag.chunking.service import DocumentChunker, ChunkingException
 
 
 # --- Fixtures & helpers ---

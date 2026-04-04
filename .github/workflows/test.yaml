@@ -39,4 +39,4 @@ jobs:
 
     - name: Generate coverage report
       run: |
-        pytest tests -v --cov=app --cov-report=term-missing
+        pytest tests -v --cov=rag --cov-report=term-missing

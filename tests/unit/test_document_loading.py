@@ -3,7 +3,7 @@ from unittest.mock import patch
 
 from langchain_core.documents import Document
 
-from app.services.document_loading.service import (
+from rag.ingestion.service import (
     DocumentLoader,
     FileNotFoundException,
     ExtractionException,
@@ -62,7 +62,7 @@ async def test_process_single_file_returns_one_doc_per_section(loader, tmp_path)
     md_content = "# Section 1\nContent one.\n\n# Section 2\nContent two."
     mock_doc = Document(page_content=md_content, metadata={})
 
-    with patch("app.services.document_loading.service.DoclingLoader") as MockLoader:
+    with patch("rag.ingestion.service.DoclingLoader") as MockLoader:
         MockLoader.return_value.load.return_value = [mock_doc]
         fake_file = tmp_path / "test.pdf"
         fake_file.touch()
@@ -81,7 +81,7 @@ async def test_process_single_file_metadata_fields(loader, tmp_path):
     md_content = "## Only Section\nSome content here."
     mock_doc = Document(page_content=md_content, metadata={})
 
-    with patch("app.services.document_loading.service.DoclingLoader") as MockLoader:
+    with patch("rag.ingestion.service.DoclingLoader") as MockLoader:
         MockLoader.return_value.load.return_value = [mock_doc]
         fake_file = tmp_path / "report.pdf"
         fake_file.touch()
@@ -99,7 +99,7 @@ async def test_process_single_file_metadata_fields(loader, tmp_path):
 
 @pytest.mark.asyncio
 async def test_process_single_file_empty_extraction_raises(loader, tmp_path):
-    with patch("app.services.document_loading.service.DoclingLoader") as MockLoader:
+    with patch("rag.ingestion.service.DoclingLoader") as MockLoader:
         MockLoader.return_value.load.return_value = []
         fake_file = tmp_path / "empty.pdf"
         fake_file.touch()

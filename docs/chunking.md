@@ -1,15 +1,15 @@
 # Chunking Service
 
-**Location:** [app/services/chunking/](../../app/services/chunking/)
+**Location:** [rag/chunking/](../rag/chunking/)
 
-Takes section-level `Document`s from the document loading stage and splits them into overlapping token-bounded chunks using Chonkie's recursive pipeline. Returns a `(parents, children)` pair for parent-child retrieval architectures.
+Takes section-level `Document`s from the ingestion stage and splits them into overlapping token-bounded chunks using Chonkie's recursive pipeline. Returns a `(parents, children)` pair for parent-child retrieval architectures.
 
 ---
 
 ## File Structure
 
 ```
-app/services/chunking/
+rag/chunking/
 ├── __init__.py     # Exports DocumentChunker, ChunkingException
 └── service.py      # DocumentChunker — main entry point
 ```
@@ -32,17 +32,17 @@ app/services/chunking/
 
 ## Key Class
 
-### `DocumentChunker` — [service.py](../../app/services/chunking/service.py)
+### `DocumentChunker` — [service.py](../rag/chunking/service.py)
 
 ```python
-from app.services.chunking import DocumentChunker
+from rag.chunking import DocumentChunker
 ```
 
 **Constructor**
 
 | Parameter | Type | Default | Description |
 |---|---|---|---|
-| `chunk_size` | `int` | `512` | Maximum tokens per chunk (character-level by default). |
+| `chunk_size` | `int` | `512` | Maximum tokens per chunk. |
 | `chunk_overlap` | `int` | `50` | Number of overlap characters added between adjacent chunks by `OverlapRefinery`. |
 
 **Methods**
@@ -58,12 +58,12 @@ from app.services.chunking import DocumentChunker
 
 ### Parents
 
-Each parent is the original section `Document` enriched with two additional metadata fields:
+Each parent is the original section `Document` enriched with:
 
 | Field | Type | Description |
 |---|---|---|
 | `parent_id` | `str` | UUID assigned to this parent. Referenced by its children. |
-| `breadcrumb` | `str` | Heading path, e.g. `report.pdf > Chapter 1 > Introduction`. Derived from `file_name` and any `h1`–`h6` metadata present on the input doc. |
+| `breadcrumb` | `str` | Heading path, e.g. `report.pdf > Chapter 1 > Introduction`. |
 
 All other metadata from the input `Document` is preserved as-is.
 
@@ -96,7 +96,7 @@ Sections that raise `ChunkingException` are logged as errors and skipped; they d
 
 ```python
 import asyncio
-from app.services.chunking import DocumentChunker
+from rag.chunking import DocumentChunker
 from langchain_core.documents import Document
 
 async def main():
@@ -119,11 +119,11 @@ async def main():
 asyncio.run(main())
 ```
 
-Used together with the document loading service:
+Used together with the ingestion service:
 
 ```python
-from app.services.document_loading import DocumentLoader
-from app.services.chunking import DocumentChunker
+from rag.ingestion import DocumentLoader
+from rag.chunking import DocumentChunker
 
 loader = DocumentLoader()
 chunker = DocumentChunker(chunk_size=512, chunk_overlap=50)

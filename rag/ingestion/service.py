@@ -11,6 +11,8 @@ from langchain_docling.loader import ExportType
 from langchain_core.documents import Document
 from langchain_text_splitters import MarkdownHeaderTextSplitter
 
+from settings.config import settings
+
 logger = logging.getLogger("EnterpriseIngestion")
 
 
@@ -27,6 +29,23 @@ class FileNotFoundException(DocumentLoadingException):
 class ExtractionException(DocumentLoadingException):
     def __init__(self, file_name: str, reason: str):
         super().__init__(f"Failed to extract content from '{file_name}': {reason}")
+
+
+def _extract_with_unstructured(file_path: str) -> str:
+    """Extract text using unstructured.io."""
+    from unstructured.partition.auto import partition
+
+    elements = partition(file_path)
+    return "\n".join(str(el) for el in elements)
+
+
+def _extract_with_docling(file_path: str, export_type: ExportType) -> str:
+    """Extract content using Docling (OCR-capable)."""
+    loader = DoclingLoader(file_path=file_path, export_type=export_type)
+    raw_docs = loader.load()
+    if not raw_docs:
+        raise ExtractionException(Path(file_path).name, "Docling returned no content")
+    return raw_docs[0].page_content
 
 
 class DocumentLoader:
@@ -61,32 +80,46 @@ class DocumentLoader:
             if isinstance(res, Exception):
                 logger.error(f"Task failure: {res}")
             else:
-                all_sections.extend(res)
+                all_sections.extend(res)  # type: ignore[arg-type]
 
         logger.info(f"Total sections loaded: {len(all_sections)}")
         return all_sections
 
+    async def _smart_extract(self, file_path: Path) -> tuple[str, str]:
+        """
+        Smart extraction strategy:
+        1. Try unstructured on the first N sample pages.
+        2. If content is sparse (< CHAR_COUNT_THRESHOLD chars), fall back to Docling.
+        Returns (markdown_content, extractor_type).
+        """
+        file_str = str(file_path)
+
+        try:
+            content = await asyncio.to_thread(_extract_with_unstructured, file_str)
+            if len(content) >= settings.ingestion.char_count_threshold:
+                logger.info(f"Unstructured succeeded for '{file_path.name}' ({len(content)} chars)")
+                return content, "unstructured"
+            logger.info(
+                f"Unstructured content sparse for '{file_path.name}' "
+                f"({len(content)} chars < {settings.ingestion.char_count_threshold}), falling back to Docling"
+            )
+        except Exception as e:
+            logger.warning(f"Unstructured failed for '{file_path.name}': {e}. Falling back to Docling.")
+
+        content = await asyncio.to_thread(_extract_with_docling, file_str, self.export_type)
+        logger.info(f"Docling extraction succeeded for '{file_path.name}'")
+        return content, "docling"
+
     async def process_single_file(self, file_path: Path) -> List[Document]:
         """
-        Converts a single file to markdown via Docling, then splits it into
-        one LangChain Document per markdown section (heading block).
+        Extracts a file using smart extraction (unstructured → Docling fallback),
+        splits the markdown into sections, and attaches metadata per section.
         """
         t_start = time.perf_counter()
         ingestion_timestamp = datetime.now().isoformat()
 
         try:
-            loader = DoclingLoader(
-                file_path=str(file_path),
-                export_type=self.export_type,
-            )
-
-            # Docling conversion is CPU/IO intensive — offload to thread
-            raw_docs = await asyncio.to_thread(loader.load)
-
-            if not raw_docs:
-                raise ExtractionException(file_path.name, "Docling returned no content")
-
-            full_markdown = raw_docs[0].page_content
+            full_markdown, extractor_type = await self._smart_extract(file_path)
             splits = await asyncio.to_thread(self._md_splitter.split_text, full_markdown)
 
             documents: List[Document] = []
@@ -113,12 +146,16 @@ class DocumentLoader:
                         "section_hash": section_hash,
                         "ingestion_timestamp": ingestion_timestamp,
                         "text_len_chars": len(text),
+                        "extractor_type": extractor_type,
                         **section.metadata,
                     },
                 ))
 
             elapsed = time.perf_counter() - t_start
-            logger.info(f"Processed '{file_path.name}': {len(documents)} sections in {elapsed:.2f}s")
+            logger.info(
+                f"Processed '{file_path.name}': {len(documents)} sections "
+                f"via {extractor_type} in {elapsed:.2f}s"
+            )
             return documents
 
         except ExtractionException:
