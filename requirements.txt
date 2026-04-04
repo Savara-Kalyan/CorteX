@@ -5,6 +5,7 @@ pypdf
 pypdf
 langchain-docling
 langchain-core
+langchain-openai
 langchain-text-splitters
 
 # Scripts
