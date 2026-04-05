@@ -6,6 +6,7 @@ pypdf
 langchain-docling
 langchain-core
 langchain-openai
+langchain-anthropic
 langchain-text-splitters
 
 # Scripts
@@ -20,6 +21,7 @@ pytest-mock
 pytest-cov
 
 # Db
+redis
 pgvector
 psycopg2-binary
 psycopg[binary]

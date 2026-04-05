@@ -13,6 +13,11 @@ EMBEDDINGS:
 #   MODEL: voyage-3
 
 
+QUERY_UNDERSTANDING:
+  PROVIDER: openai
+  MODEL: gpt-5.4-nano-2026-03-17
+  TEMPERATURE: 0.3
+
 INGESTION:
   CHAR_COUNT_THRESHOLD: 500   # min chars from unstructured before falling back to Docling
   SAMPLE_PAGES: 2             # number of PDF pages to sample with unstructured

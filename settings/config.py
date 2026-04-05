@@ -23,6 +23,13 @@ class EmbeddingSettings:
 
 
 @dataclass
+class QueryUnderstandingSettings:
+    provider: str
+    model: str
+    temperature: float
+
+
+@dataclass
 class VectorStoreSettings:
     provider: str
     # pgvector
@@ -39,6 +46,7 @@ class Settings:
     embeddings: EmbeddingSettings
     vector_store: VectorStoreSettings
     ingestion: IngestionSettings
+    query_understanding: QueryUnderstandingSettings
 
 
 def _load_settings() -> Settings:
@@ -49,6 +57,7 @@ def _load_settings() -> Settings:
     vs = raw["VECTOR_STORE"]
     emb = raw["EMBEDDINGS"]
     ing = raw["INGESTION"]
+    qu = raw["QUERY_UNDERSTANDING"]
 
     return Settings(
         llm=LLMSettings(
@@ -69,6 +78,11 @@ def _load_settings() -> Settings:
         ingestion=IngestionSettings(
             char_count_threshold=ing["CHAR_COUNT_THRESHOLD"],
             sample_pages=ing["SAMPLE_PAGES"],
+        ),
+        query_understanding=QueryUnderstandingSettings(
+            provider=qu["PROVIDER"],
+            model=qu["MODEL"],
+            temperature=qu["TEMPERATURE"],
         ),
     )
 

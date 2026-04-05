@@ -200,8 +200,8 @@ def configure(config: LoggingConfig):
     Initialize logging system once at startup.
     
     Example:
-        from cortex.core.logging import configure, get_logger
-        from cortex.core.logging.config import get_logging_config
+        from cortex.core.observability.logging import configure, get_logger
+        from cortex.core.observability.logging.config import get_logging_config
         
         config = get_logging_config()
         configure(config)

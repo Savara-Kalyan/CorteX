@@ -48,6 +48,17 @@ def _extract_with_docling(file_path: str, export_type: ExportType) -> str:
     return raw_docs[0].page_content
 
 
+_KNOWN_DOMAINS = {"hr", "engineering", "culture"}
+
+
+def _infer_domain(file_path: Path) -> str:
+    """Derive domain from the nearest parent folder that matches a known domain name."""
+    for part in reversed(file_path.parts):
+        if part.lower() in _KNOWN_DOMAINS:
+            return part.lower()
+    return "general"
+
+
 class DocumentLoader:
     SUPPORTED_EXTENSIONS = {".pdf", ".docx", ".pptx", ".xlsx", ".html", ".ascii", ".md"}
 
@@ -135,12 +146,14 @@ class DocumentLoader:
                     "",
                 )
                 section_hash = hashlib.sha256(text.encode("utf-8")).hexdigest()
+                domain = _infer_domain(file_path)
                 documents.append(Document(
                     page_content=text,
                     metadata={
                         "source": str(file_path),
                         "file_name": file_path.name,
                         "file_type": file_path.suffix.lower().lstrip("."),
+                        "domain": domain,
                         "section_index": i,
                         "section_heading": section_heading,
                         "section_hash": section_hash,

@@ -10,6 +10,18 @@ services:
       - ../..:/workspace:cached
     command: sleep infinity
   
+  valkey:
+    image: valkey/valkey:8-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - valkey_data:/data
+    healthcheck:
+      test: ["CMD", "valkey-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
   vector_store:
     image: pgvector/pgvector:pg16
     environment:
@@ -28,5 +40,6 @@ services:
 
 volumes:
   pgvector_data:
+  valkey_data:
   
   
