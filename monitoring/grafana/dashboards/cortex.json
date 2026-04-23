@@ -1,0 +1,109 @@
+{
+  "title": "CorteX",
+  "uid": "cortex-main",
+  "schemaVersion": 38,
+  "version": 1,
+  "refresh": "15s",
+  "time": { "from": "now-1h", "to": "now" },
+  "panels": [
+    {
+      "id": 1,
+      "title": "Agent Calls / min",
+      "type": "timeseries",
+      "gridPos": { "x": 0, "y": 0, "w": 12, "h": 8 },
+      "targets": [
+        {
+          "expr": "sum by (agent) (rate(cortex_agent_calls_total[1m]))",
+          "legendFormat": "{{ agent }}"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Query Duration p50 / p95 / p99",
+      "type": "timeseries",
+      "gridPos": { "x": 12, "y": 0, "w": 12, "h": 8 },
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.50, rate(cortex_query_duration_seconds_bucket[5m]))",
+          "legendFormat": "p50"
+        },
+        {
+          "expr": "histogram_quantile(0.95, rate(cortex_query_duration_seconds_bucket[5m]))",
+          "legendFormat": "p95"
+        },
+        {
+          "expr": "histogram_quantile(0.99, rate(cortex_query_duration_seconds_bucket[5m]))",
+          "legendFormat": "p99"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Active Requests",
+      "type": "stat",
+      "gridPos": { "x": 0, "y": 8, "w": 4, "h": 4 },
+      "targets": [
+        { "expr": "cortex_active_requests", "legendFormat": "active" }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Total Cost (USD)",
+      "type": "stat",
+      "gridPos": { "x": 4, "y": 8, "w": 4, "h": 4 },
+      "targets": [
+        { "expr": "sum(cortex_cost_usd_total)", "legendFormat": "USD" }
+      ],
+      "fieldConfig": { "defaults": { "unit": "currencyUSD" } }
+    },
+    {
+      "id": 5,
+      "title": "Errors / min",
+      "type": "stat",
+      "gridPos": { "x": 8, "y": 8, "w": 4, "h": 4 },
+      "targets": [
+        {
+          "expr": "sum(rate(cortex_errors_total[1m]))",
+          "legendFormat": "errors/min"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Tokens Used / min",
+      "type": "timeseries",
+      "gridPos": { "x": 12, "y": 8, "w": 12, "h": 8 },
+      "targets": [
+        {
+          "expr": "sum by (model, token_type) (rate(cortex_tokens_used_total[1m]))",
+          "legendFormat": "{{ model }} {{ token_type }}"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "title": "RAG Quality",
+      "type": "stat",
+      "gridPos": { "x": 0, "y": 12, "w": 12, "h": 4 },
+      "targets": [
+        { "expr": "cortex_rag_precision_at5", "legendFormat": "P@5" },
+        { "expr": "cortex_rag_mrr",           "legendFormat": "MRR" },
+        { "expr": "cortex_rag_ndcg",          "legendFormat": "NDCG" }
+      ],
+      "fieldConfig": { "defaults": { "min": 0, "max": 1, "unit": "percentunit" } }
+    },
+    {
+      "id": 8,
+      "title": "Chunks Retrieved",
+      "type": "timeseries",
+      "gridPos": { "x": 12, "y": 12, "w": 12, "h": 4 },
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.50, rate(cortex_chunks_retrieved_bucket[5m]))",
+          "legendFormat": "p50 chunks"
+        }
+      ]
+    }
+  ]
+}

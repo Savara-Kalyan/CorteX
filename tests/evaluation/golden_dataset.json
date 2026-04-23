@@ -1,0 +1,253 @@
+[
+  {
+    "id": "hr-001",
+    "category": "hr",
+    "domain": "hr",
+    "query": "How many consecutive calendar days of PTO require special permission from the manager?",
+    "ground_truth": "For time off exceeding 25 consecutive calendar days (including weekends and holidays), special permission is required from your Manager, People Business Partner, and the Absence Management Team.",
+    "relevant_chunk_ids": [
+      14841,
+      14839,
+      14838,
+      14884,
+      14812
+    ]
+  },
+  {
+    "id": "hr-002",
+    "category": "hr",
+    "domain": "hr",
+    "query": "Can GitLab team members substitute PTO for sick time?",
+    "ground_truth": "No. Team members are not allowed to substitute PTO for sick time. If taking time off for medical needs or sick time, they must follow the Sick Time Policy.",
+    "relevant_chunk_ids": [
+      14813
+    ]
+  },
+  {
+    "id": "hr-003",
+    "category": "hr",
+    "domain": "hr",
+    "query": "What is the minimum total PTO GitLab strongly recommends taking each year?",
+    "ground_truth": "GitLab strongly recommends taking at least two consecutive weeks of time off and at minimum 25 days total throughout the year.",
+    "relevant_chunk_ids": [
+      14812,
+      14835,
+      14617,
+      14857
+    ]
+  },
+  {
+    "id": "hr-004",
+    "category": "hr",
+    "domain": "hr",
+    "query": "Who should a GitLab team member report harassment to?",
+    "ground_truth": "Team members should report harassment directly to the Chief People Officer, Team Member Relations, or a People Business Partner immediately for thorough investigation.",
+    "relevant_chunk_ids": [
+      14371,
+      14372,
+      14363,
+      14343,
+      14706
+    ]
+  },
+  {
+    "id": "hr-005",
+    "category": "hr",
+    "domain": "hr",
+    "query": "Does GitLab's anti-harassment policy apply only to internal team interactions?",
+    "ground_truth": "No. The Anti-harassment policy applies to GitLab team members' interactions with customers, vendors, and community members, not just internal interactions.",
+    "relevant_chunk_ids": [
+      14343,
+      14708,
+      14346,
+      14342,
+      14340
+    ]
+  },
+  {
+    "id": "hr-006",
+    "category": "hr",
+    "domain": "hr",
+    "query": "How many days before the hire date is the onboarding issue opened at GitLab?",
+    "ground_truth": "The People Operations Specialist opens the onboarding issue at least 4 days prior to the hire date.",
+    "relevant_chunk_ids": [
+      14479,
+      14494,
+      14496
+    ]
+  },
+  {
+    "id": "hr-007",
+    "category": "hr",
+    "domain": "hr",
+    "query": "How long is the due date for the main section of the GitLab onboarding issue?",
+    "ground_truth": "The main section of the onboarding issue has a due date of 30 days.",
+    "relevant_chunk_ids": [
+      14480
+    ]
+  },
+  {
+    "id": "hr-008",
+    "category": "hr",
+    "domain": "hr",
+    "query": "What is the effective date of GitLab's Anti-Retaliation Policy?",
+    "ground_truth": "The Anti-Retaliation Policy has an effective date of 21 April 2023.",
+    "relevant_chunk_ids": [
+      14451,
+      14607,
+      14452
+    ]
+  },
+  {
+    "id": "eng-001",
+    "category": "engineering",
+    "domain": "engineering",
+    "query": "What is the focus of GitLab's engineering direction in terms of product quality?",
+    "ground_truth": "GitLab's engineering focus is to make GitLab enterprise grade in all its abilities and to support the AI efforts required to successfully launch AI features to General Availability.",
+    "relevant_chunk_ids": [
+      14264,
+      14265,
+      14263,
+      14266,
+      14288
+    ]
+  },
+  {
+    "id": "eng-002",
+    "category": "engineering",
+    "domain": "engineering",
+    "query": "What infrastructure work supports GitLab's disaster recovery and availability goals?",
+    "ground_truth": "Teams are collaborating on improving disaster recovery and support offerings through ongoing work with GitLab Dedicated and Cells infrastructure, with the goal of improved availability and service recovery.",
+    "relevant_chunk_ids": [
+      14265
+    ]
+  },
+  {
+    "id": "eng-003",
+    "category": "engineering",
+    "domain": "engineering",
+    "query": "What are the three components of career development for engineers at GitLab?",
+    "ground_truth": "The three important components of developing one's career at GitLab are Structure, Growth, and something to be discussed with the manager \u00e2\u20ac\u201d specifically the career coaching conversation, promotion track, and individual development.",
+    "relevant_chunk_ids": [
+      14208,
+      14212,
+      14307,
+      14264,
+      14266
+    ]
+  },
+  {
+    "id": "eng-004",
+    "category": "engineering",
+    "domain": "engineering",
+    "query": "What determines the engineering How and When in product development at GitLab?",
+    "ground_truth": "Engineering determines the How (technical implementation) and When (scheduling) of platform releases, while Product Management looks ahead for the What and Why.",
+    "relevant_chunk_ids": [
+      14263
+    ]
+  },
+  {
+    "id": "eng-005",
+    "category": "engineering",
+    "domain": "engineering",
+    "query": "What guides engineering culture at GitLab?",
+    "ground_truth": "Engineering culture at GitLab encompasses the processes, workflows, principles and priorities that all stem from GitLab Values.",
+    "relevant_chunk_ids": [
+      14266,
+      14263,
+      14264,
+      14265,
+      14307
+    ]
+  },
+  {
+    "id": "eng-006",
+    "category": "engineering",
+    "domain": "engineering",
+    "query": "What percentage of engineering time does Product Management prioritize at GitLab?",
+    "ground_truth": "Product Management prioritizes 60% of engineering time, and Engineering prioritizes 40% of time on initiatives that improve the product, underlying platform, and foundational technologies.",
+    "relevant_chunk_ids": [
+      14268
+    ]
+  },
+  {
+    "id": "culture-001",
+    "category": "culture",
+    "domain": "culture",
+    "query": "What does CREDIT stand for in GitLab's values?",
+    "ground_truth": "GitLab's six core values are Collaboration, Results for Customers, Efficiency, Diversity Inclusion and Belonging, Iteration, and Transparency, and together they spell CREDIT.",
+    "relevant_chunk_ids": [
+      13650,
+      13655,
+      13651,
+      13649,
+      13652
+    ]
+  },
+  {
+    "id": "culture-002",
+    "category": "culture",
+    "domain": "culture",
+    "query": "Why did GitLab condense its values into the CREDIT acronym?",
+    "ground_truth": "GitLab had more values previously but it was difficult to remember them all. They condensed them, created the CREDIT acronym, and listed operating principles to guide behavior.",
+    "relevant_chunk_ids": [
+      13655,
+      13651,
+      13650,
+      13652,
+      13649
+    ]
+  },
+  {
+    "id": "culture-003",
+    "category": "culture",
+    "domain": "culture",
+    "query": "Are GitLab's values a fixed document or do they change over time?",
+    "ground_truth": "GitLab values are a living document. They have been documented, refined, and revised based on lessons learned in the course of doing business.",
+    "relevant_chunk_ids": [
+      13654,
+      13653,
+      13650,
+      14106,
+      13655
+    ]
+  },
+  {
+    "id": "culture-004",
+    "category": "culture",
+    "domain": "culture",
+    "query": "In how many countries does GitLab operate as a remote company?",
+    "ground_truth": "GitLab operates in 65+ countries as an all-remote, asynchronous company.",
+    "relevant_chunk_ids": [
+      13641,
+      13639,
+      13645
+    ]
+  },
+  {
+    "id": "culture-005",
+    "category": "culture",
+    "domain": "culture",
+    "query": "Who can suggest improvements to GitLab's values?",
+    "ground_truth": "Everyone is welcome to suggest improvements to GitLab's values. MRs to update the values should be assigned to the Chief People Officer.",
+    "relevant_chunk_ids": [
+      13656,
+      13653,
+      14156,
+      13654,
+      14188
+    ]
+  },
+  {
+    "id": "culture-006",
+    "category": "culture",
+    "domain": "culture",
+    "query": "What is GitLab's approach to remote work described as?",
+    "ground_truth": "GitLab describes itself as all-remote since inception, operating as an asynchronous, no-office company consistently recognized as a great place to work.",
+    "relevant_chunk_ids": [
+      13641,
+      13639,
+      13645
+    ]
+  }
+]

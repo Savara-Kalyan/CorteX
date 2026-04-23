@@ -1,0 +1,175 @@
+# GitLab Onboarding
+
+Source: https://handbook.gitlab.com/handbook/people-group/general-onboarding/
+
+---
+
+
+# GitLab Onboarding
+
+
+Onboarding is incredibly important at GitLab. We don’t expect you to hit the ground running from day one.
+
+
+We highly recommend taking at least two full weeks for onboarding and only in week three starting with team specific onboarding and training. Please feel free to participate in your team’s work in your first two weeks, but don’t feel like you have to contribute heavily.
+
+
+All onboarding steps are in the onboarding issue template which is owned by the People Operations team. The onboarding process for the new team member is self-driven and self-learning , whilst also remaining as asynchronous as possible settling into the remote life at GitLab.
+
+
+At GitLab we take great pride in dogfooding our own product, that is why all onboarding tasks are completed in a GitLab issue. First of all, what is an issue? You can learn more about what an issue is here .
+
+
+The People Operations Specialist assigned to the team members specific onboarding will open the onboarding issue at least 4 days prior to the hire date.
+
+
+Each onboarding issue has a main section that contains tasks relevant to all GitLab team-members and a due date of 30 days. Below the main section are department and role-specific tasks. Some roles and departments have tasks that link to a supplemental issue template or an additional onboarding page.  Reach out to your onboarding buddy or other GitLab team members if you need help understanding or completing any of your tasks.
+
+
+Through onboarding issues, you should gain access to our team member baseline entitlements . On Day 2 of onboarding an Access Request will be generated, if a template has been created for the role. Access requests are owned by the IT team. If you have any access requests related questions, please reach out to #it-help in Slack.
+
+
+In certain instances, the People Operations team may not be able to assist with onboardings due to a national holiday or Family and Friends Day. These specific dates are documented in the People Operations team availability .
+
+
+## TaNewKi Welcome Call
+
+
+The People Operations team hosts a pre-onboarding call known as the Ta-New-Ki call (a play on the abstract Tanuki i.e. Japanese raccoon dog you will find in our logo). The purpose of this call, which is hosted in Zoom, is to give soon to onboard team members the chance to meet / socialise and to provide an opportunity to ask any lingering questions ahead of their start date. Internally we refer to this as an AMA (Ask Me Anything) call.
+
+
+Hiring managers and current team members (such as onboarding buddies), are more than welcome to join the call.
+
+
+This call occurs every two weeks on Thursday at three times to account for timezones.
+
+- 04:00/16:00 PM PT
+
+04:00/16:00 PM PT
+
+- 12:00/00:00 AM PT
+
+12:00/00:00 AM PT
+
+- 08:30 AM PT
+
+08:30 AM PT
+
+- For current team members: To add the invite to your calendar, review the GitLab Team Meeting Calendar.
+
+For current team members: To add the invite to your calendar, review the GitLab Team Meeting Calendar.
+
+- For future team members: You will receive an email with the future dates.
+
+For future team members: You will receive an email with the future dates.
+
+
+Please note that this call will take a place a week or two before your actual start date.
+
+
+### Agenda
+
+
+General Topics Covered
+
+- Review the onboarding process on Day 1
+- Encourage team members to take their time
+- Self Driven and self service
+- Questions from the new team members
+
+### Sending out the TaNEWki Call Invite
+
+- Invites are sent by the People Operations Specialist in the respective rotation. This email should be sent out at least one week before the call. Open the Ta"NEW"ki Folder located People Experience/Ops Shared Drive>People Experience>Ta"NEW"ki Call Update the google form to include the next two TaNEWki call dates (AMER/APAC, APAC/EMEA and EMEA/AMER times) Use this email template Add the new team members emails to the BCC line and CC the People Operations team. The People Operations team can check who will be attending the call by looking at the Google response sheet. Once new hires have completed the form an auto-response (via Document Studio) will reply with the zoom link and the date selected.
+- Open the Ta"NEW"ki Folder located People Experience/Ops Shared Drive>People Experience>Ta"NEW"ki Call
+- Update the google form to include the next two TaNEWki call dates (AMER/APAC, APAC/EMEA and EMEA/AMER times)
+- Use this email template
+- Add the new team members emails to the BCC line and CC the People Operations team.
+- The People Operations team can check who will be attending the call by looking at the Google response sheet.
+- Once new hires have completed the form an auto-response (via Document Studio) will reply with the zoom link and the date selected.
+
+## Slack Channel Support for New Team Members
+
+
+By default, all new team members are added to the below Slack channels from day 1 to ensure that they are able to ask any questions or for assistance in the correct channels upfront:
+
+- #new_team_members (go say hi and introduce yourself)
+- #diversity_inclusion_and_belonging (connect with other team members to find out more about what we do in Diversity, Inclusion and Belonging)
+- #it_help (any IT related support needed, such as issues with laptop, 1Password, Okta, JAMF, etc)
+- #questions (anything that the Handbook can’t help with)
+- #donut-be-strangers (need some help setting up a coffee chat)
+- #team-member-updates (new team member, anniversaries, goodbyes)
+- #thanks (want to acknowledge and thank someone at GitLab, this is the channel)
+- #whats-happening-at-gitlab (all important updates/reminders/notifications related to GitLab)
+
+## Managers of New Team Members
+
+
+An issue is created for new team members at least 4 business days prior to their start date. The Manager and a People Operations Team member will be assigned to this issue. Managers and People Operations all have tasks that need to be completed prior to the start date to ensure a smooth and successful onboarding process. For questions or help with any of these tasks feel free to reach out in the issue or by creating a request via HelpLab.
+
+
+### Compliance
+
+
+The Senior People Operations Specialist completes a monthly audit of all open onboarding issues to ensure that the new team member, manager and People Operations team tasks are completed. More importantly, there are certain tasks which need to be completed in line with our company compliance (security, payroll, etc).
+
+
+If any tasks are still outstanding, the People Operations Specialist will ping the relevant members on the issue requesting action on the items or checking whether the issue can be closed.
+
+
+It remains the responsibility of the People Operations Specialist to close the issue and remain compliant.
+
+
+The employment bot will automatically close any onboarding issues still open after 60 days.
+
+
+### Completing Onboarding Issue
+
+
+First of all, what is an issue? You can learn more about what an issue is here .
+
+
+To ensure a successful completion of the onboarding issue, it is important that all tasks are checked off, whether the task is applicable to the onboarding team member or not. Checking the box indicates one of the following:
+
+- I have completed this task
+- I have checked and this task is not applicable to me
+
+### Onboarding Issue Template Links
+
+
+These templates are used by the People Operations team to onboard new team members.
+
+- All GitLab team-members
+- Intern
+
+#### Role Specific Templates
+
+
+All onboarding related employment templates (country and role based) can be found in the public repository
+
+
+### Supplemental onboarding issue templates
+
+- Interviewing training issue
+- Analytics group onboarding issue
+- Becoming a GitLab manager issue
+- Production engineering onboarding issue
+- Security products technical onboarding issue
+- Support engineer onboarding issue
+
+### Temporary Service Provider (Contractor/Consultant) Onboarding
+
+
+The People team is not involved in the process for hiring, onboarding, or offboarding temporary service providers. You can work with the Procurement team on these onboardings and review the temporary service provider internal handbook page for templates and other helpful information.
+
+
+### Additional onboarding pages
+
+- Developer onboarding
+- GitLab onboarding buddies
+- Merge Request buddies
+- Onboarding Processes
+- Developer Experience Onboarding
+- Sales team onboarding
+- Support team onboarding
+- SRE Onboarding
+- UX Researcher onboarding

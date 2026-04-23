@@ -1,18 +1,24 @@
-# Services
-chonkie
-unstructured[all-docs]
-pypdf
-pypdf
-langchain-docling
+# Core
+python-dotenv
 langchain-core
 langchain-openai
 langchain-anthropic
 langchain-text-splitters
+langgraph
 
-# Scripts
-playwright
-aiofiles
-beautifulsoup4
+# Document loading
+pdfplumber
+
+# RAG / Vector
+pgvector
+psycopg[binary]
+qdrant-client
+
+# Session / Rate limiting
+redis
+
+# Observability
+prometheus_client
 
 # Testing
 pytest
@@ -20,10 +26,11 @@ pytest-asyncio
 pytest-mock
 pytest-cov
 
-# Db
-redis
-pgvector
-psycopg2-binary
-psycopg[binary]
-qdrant-client
+# Evaluation
+ragas
+datasets
 
+# Web / Scraping (for research agent)
+playwright
+aiofiles
+beautifulsoup4

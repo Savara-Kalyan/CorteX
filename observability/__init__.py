@@ -1,5 +1,4 @@
-
-from .logging import (
+from .logger import (
     get_logger,
     configure,
     Logger,

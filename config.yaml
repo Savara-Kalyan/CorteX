@@ -1,35 +1,43 @@
 
 LLM:
   PROVIDER: OPENAI
-  MODEL: gpt-5.4-nano-2026-03-17
+  MODEL: gpt-4o-mini
 
 EMBEDDINGS:
   PROVIDER: openai
   MODEL: text-embedding-3-small
 
-# To switch to Anthropic embeddings:
-# EMBEDDINGS:
-#   PROVIDER: anthropic
-#   MODEL: voyage-3
-
-
 QUERY_UNDERSTANDING:
   PROVIDER: openai
-  MODEL: gpt-5.4-nano-2026-03-17
+  MODEL: gpt-4o-mini
   TEMPERATURE: 0.3
 
-INGESTION:
-  CHAR_COUNT_THRESHOLD: 500   # min chars from unstructured before falling back to Docling
-  SAMPLE_PAGES: 2             # number of PDF pages to sample with unstructured
+CHUNKING:
+  CHUNK_SIZE: 512
+  CHUNK_OVERLAP: 100
+  DOMAIN_OVERRIDES:
+    hr:
+      CHUNK_SIZE: 512
+      CHUNK_OVERLAP: 96
+    engineering:
+      CHUNK_SIZE: 768
+      CHUNK_OVERLAP: 128
+    culture:
+      CHUNK_SIZE: 256
+      CHUNK_OVERLAP: 50
+
+RETRIEVAL:
+  TOP_K: 5
+  FETCH_K: 40
 
 VECTOR_STORE:
   PROVIDER: pgvector
-  CONNECTION_STRING: "postgresql://cortex:cortex@vector_store:5432/cortex_vectors"
+  # PGVECTOR_URL env var overrides this at runtime (set automatically in docker-compose)
+  CONNECTION_STRING: "postgresql://cortex:cortex@localhost:5432/cortexdb"
 
-# To switch to Qdrant, replace the above with:
+# To switch to Qdrant, replace the VECTOR_STORE block with:
 # VECTOR_STORE:
 #   PROVIDER: qdrant
 #   URL: "http://localhost:6333"
 #   API_KEY: ""              # optional, for Qdrant Cloud
 #   COLLECTION_NAME: "documents"
-
